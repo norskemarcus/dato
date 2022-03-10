@@ -4,13 +4,10 @@ public class TestDate {
 
     public static void main(String[] args) {
 
-
         MyDate date = new MyDate(8,3, 2022); // Today´s date
         System.out.println(date);
-
         date.setToNextDay(); // dagen efter
         System.out.println("Burde være 9/3/2022 " + date);
-
         date.setToNextDay(); // dagen efter der igen, den skal opdatere korrekt
         System.out.println("Burde være 10/3/2022 " + date);
 
@@ -19,7 +16,7 @@ public class TestDate {
         System.out.println("Check af månedsskifte feb/mars: ");
         System.out.println(dateTest);
         dateTest.setToNextDay(); // dagen efter
-        System.out.println(dateTest);
+        System.out.println("Burde være 1.3.2022: " + dateTest);
 
         System.out.println(" ");
         MyDate dateTest2 = new MyDate(31,3, 2022);
@@ -44,7 +41,25 @@ public class TestDate {
         dateTest4.setToNextDay(); // dagen efter
         System.out.println("Burde være 1.3.2024 " + dateTest4);
 
+        System.out.println(" ");
+        MyDate dateTest5 = new MyDate(28,2, 2023); // næste skudårsdag
+        System.out.println("Check af skudårsdag 28.2.2023: ");
+        System.out.println(dateTest5);
+        dateTest5.setToNextDay(); // dagen efter
+        System.out.println("Burde være 1.3.2023 " + dateTest5);
+        dateTest5.setToNextDay(); // dagen efter
+        System.out.println("Burde være 2.3.2023 " + dateTest5);
 
+        System.out.println(" ");
+        MyDate dateTest6 = new MyDate(28,2, 1900); // næste skudårsdag
+        System.out.println("Check af skudårsdag 28.2.1900: ");
+        System.out.println(dateTest6);
+        dateTest6.setToNextDay(); // dagen efter
+        System.out.println("Burde være 1.3.1900 " + dateTest6);
+        dateTest6.setToNextDay(); // dagen efter
+        System.out.println("Burde være 2.3.1900 " + dateTest6);
+
+        //Invalid test / case test fx 32 3 2022
 
     }
 
