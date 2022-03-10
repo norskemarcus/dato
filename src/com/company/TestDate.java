@@ -59,8 +59,11 @@ public class TestDate {
         dateTest6.setToNextDay(); // dagen efter
         System.out.println("Burde være 2.3.1900 " + dateTest6);
 
-        //Invalid test / case test fx 32 3 2022
+        System.out.println(" ");
+        MyDate dateTest7 = new MyDate(32, 3, 2022); // invalid test
+        System.out.println("Check af invalid dato 32.3.2022: " + dateTest7);
 
+        // Burde ikke kunne have en invalid dato..
     }
 
 }

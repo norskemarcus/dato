@@ -1,7 +1,5 @@
 package com.company;
 
-//TODO: check leapyear egen metode, lave array til måneder?
-
 public class MyDate {
 
   private int day, month, year;
@@ -19,7 +17,6 @@ public class MyDate {
   int december = 12;
 
 
-  // skal den være void? Tine mumlet noget..
   public MyDate(int day, int month, int year) {
     this.day = day;
     this.month = month;
@@ -28,18 +25,16 @@ public class MyDate {
 
 
   public void setToNextDay() {
-
     day += 1;
     switchYear();
     switchMonth();
   }
 
 
-  public boolean isLeapYear(){
-    if((year % 4 == 0 && year % 100!= 0) || year % 400 == 0){
+  public boolean isLeapYear() {
+    if ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) {
       return true;
-    }
-    else {
+    } else {
       return false;
 
     }
@@ -48,22 +43,24 @@ public class MyDate {
 
   public void restartDateCount() {
 
-    if ((month == january || month == march || month == may || month == july || month == august   // Måneder med 31 dage
+    // 31 dage
+    if ((month == january || month == march || month == may || month == july || month == august
         || month == october || month == december) && day > 31) {
       day = 1;
 
-    } else if ((month == april || month == june || month == september || month == november) && day > 30) { // Måneder med 30 dage
-        day = 1;
-
-    }  else if (!isLeapYear() && (month == february) && (day > 28)){// februar har 28 dage hvis ikke skudår
+      // 30 dage
+    } else if ((month == april || month == june || month == september || month == november) && day > 30) {
       day = 1;
 
-    } else if (isLeapYear() && (month == february) && (day > 29)){
-      // februar har 29 dage hvis skudår
+      // ikke skudår = februar har 28 dage
+    } else if (!isLeapYear() && (month == february) && (day > 28)) {
+      day = 1;
+
+      // skudår = februar har 29 dage
+    } else if (isLeapYear() && (month == february) && (day > 29)) {
       day = 1;
     }
   }
-
 
 
   public String toString() {
@@ -72,30 +69,31 @@ public class MyDate {
 
   public void switchMonth() {
 
-      if ((month == january || month == march || month == may || month == july || month == august
-          || month == october) && day > 31) {  // Måneder med 31 dage
-        restartDateCount();
-        month += 1;
+    // 31 dage
+    if ((month == january || month == march || month == may || month == july || month == august
+        || month == october) && day > 31) {
+      restartDateCount();
+      month += 1;
 
-      } else if (month == december && day == 31) { // årsskifte
+      // årsskifte
+    } else if (month == december && day == 31) {
 
+      // 30 dage
+    } else if ((month == april || month == june || month == september || month == november) && day > 30) {
+      restartDateCount();
+      month += 1;
 
-      } else if ((month == april || month == june || month == september || month == november) && day > 30) { //  måneder med 30 dage
-        restartDateCount();
-        month += 1;
-
-      } else if (isLeapYear() && (month == february) && (day > 29)){// feb 29 dage hvis skudår
-        restartDateCount();
-        month += 1;
-          //TODO: Problemet er at  datoen går fra 29/2 2024 til 1/2 2024 og ikke 1/3!
-
-      } else if (!isLeapYear() && (month == february) && (day > 28)){// februar har 28 dage (hvis ikke skudår)
-        restartDateCount();
-        month += 1;
-        //TODO: Problemet er at datoen går fra 28/2 2023 til 29/2 og ikke 1/3.
-      }
+      // ikke skudår = februar har 28 dage
+    } else if (!isLeapYear() && (month == february) && (day > 28)) {
+      restartDateCount();
+      month += 1;
+    }
+    // skudår = feb 29 dage
+    else if (isLeapYear() && (month == february) && (day > 29)) {
+      restartDateCount();
+      month += 1;
+    }
   }
-
 
   public void switchYear() {
     if (day > 31 && month == december) {
