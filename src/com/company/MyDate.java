@@ -43,7 +43,7 @@ public class MyDate {
 
   public void restartDateCount() {
 
-    // 31 dage
+      // 31 dage
     if ((month == january || month == march || month == may || month == july || month == august
         || month == october || month == december) && day > 31) {
       day = 1;
@@ -64,7 +64,7 @@ public class MyDate {
 
 
   public String toString() {
-    return "Dato: " + day + '/' + month + '/' + year;
+    return "Dato fundet: " + day + '/' + month + '/' + year;
   }
 
   public void switchMonth() {
